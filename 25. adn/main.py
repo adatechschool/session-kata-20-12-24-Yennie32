@@ -63,5 +63,11 @@ def get_nucleotides(elems):
             print(result_nuc)
     return result_nuc
 
+nucleotide_sequence = get_nucleotides(adn)
+# print(nucleotide_sequence)
 
-print(get_nucleotides(adn))
+#B.3 Calcul récurrence de chaque séquence façon suite de Conway 
+
+
+
+
