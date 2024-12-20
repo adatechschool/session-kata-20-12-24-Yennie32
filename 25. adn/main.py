@@ -4,6 +4,8 @@
 
 # Importer fichier texte 
 
+import json
+
 def import_txt (file) :
     f = open(file, 'r')
     content = f.read()
@@ -14,7 +16,28 @@ adn = import_txt('adn.txt')
 
 # Découpe 
 
-def split_adn(protein, sequence):
-  return [protein[i:i+sequence] for i in range(0, len(protein), sequence)]
+def get_codon(elem, sequence):
+  return [elem[i:i+sequence] for i in range(0, len(elem), sequence)]
 
-print(split_adn(adn, 3))
+#print(get_codon(adn, 3))
+
+sequenced_table = get_codon(adn, 3)
+
+# A.2 traduire les codons en proteines
+
+#Recupérer json 
+with open("table_codon.json", "r") as f:
+    table_codon = json.load(f)
+
+#print(table_codon)
+
+# Associer protein => codon
+
+def get_protein(codons, proteins): 
+    conversion = []
+    for codon in codons:
+        converted = proteins.get(codon)
+        conversion.append(converted)
+    return ' '.join(str(e) for e in conversion) 
+
+print(get_protein(sequenced_table,table_codon ))

@@ -1,4 +1,3 @@
-https://hackernoon.com/how-to-split-string-every-nth-character-in-python
 pour importer json 
 
 ``import json
