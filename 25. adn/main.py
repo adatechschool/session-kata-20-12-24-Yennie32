@@ -44,21 +44,24 @@ def get_protein(codons, proteins):
 
 
 #B.1 Découpe en séquences de 25 éléments
-def get_consensus(elems):
-    consensus_table = get_codon(elems, 25)
+def get_consensus(elems, n):
+    consensus_table = get_codon(elems, n)
     return ' '.join(str(e) for e in consensus_table)
 
 # print(get_consensus(adn))
-consensus = get_consensus(adn)
+consensus = get_consensus(adn, 25)
 # print(consensus)
 
 # B.2 redécouper ces "groupes" en 5 séquences de 5 nucléotides
-def get_nucleotides(elems):
-    nucleotide_tab =  []
-    for elem in elems :
-        nucleotide = get_codon(elem, 5)
-        nucleotide_tab.append(nucleotide)
-        final_nuc = ' '.join(map(str, nucleotide_tab))
-    return final_nuc 
 
-print(get_nucleotides(consensus))
+def get_nucleotides(elems):
+    result_nuc = ''
+    nuc = get_consensus(elems, 5)
+    separated_nuc = nuc.split(' ') 
+    for i in separated_nuc : 
+            result_nuc= " ".join(i) 
+            print(result_nuc)
+    return result_nuc
+
+
+print(get_nucleotides(adn))
